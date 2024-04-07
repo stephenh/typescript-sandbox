@@ -1,7 +1,7 @@
 {
   "packageManager": "yarn@4.1.1",
   "scripts": {
-    "test": "tsx --test src/*.test.ts"
+    "test": "vitest"
   },
   "imports": {
     "#src/*": "./src/*"
@@ -11,6 +11,7 @@
     "@types/node": "^20.12.5",
     "prettier": "^3.2.5",
     "tsx": "^4.7.2",
-    "typescript": "^5.4.4"
+    "typescript": "^5.4.4",
+    "vitest": "^1.4.0"
   }
 }
