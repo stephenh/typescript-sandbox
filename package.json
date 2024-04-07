@@ -1,0 +1,16 @@
+{
+  "packageManager": "yarn@4.1.1",
+  "scripts": {
+    "test": "tsx --test src/*.test.ts"
+  },
+  "imports": {
+    "#src/*": "./src/*"
+  },
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.4",
+    "@types/node": "^20.12.5",
+    "prettier": "^3.2.5",
+    "tsx": "^4.7.2",
+    "typescript": "^5.4.4"
+  }
+}
