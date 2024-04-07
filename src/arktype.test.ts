@@ -3,14 +3,14 @@ import assert from "node:assert";
 import test from "node:test";
 
 // Model a user with a firstName and birthday that is a LocalDate (2024-01-01)
-const user = type({
+const userAsPojo = type({
   firstName: "string",
   // decode the string to a LocalDate
   birthday: ["string", "|>", (s) => new LocalDate(s)],
 });
 
 // Revert the user, go from POJO to JSON
-const userToJson = type({
+const userAsJson = type({
   firstName: "string",
   // encode the LocalDate to a string
   birthday: [
@@ -20,11 +20,11 @@ const userToJson = type({
   ],
 });
 
-export type User = typeof user.infer;
+export type User = typeof userAsPojo.infer;
 
 test.describe("ArkType", () => {
   test.test("takes JSON to POJO", () => {
-    const { data } = user({
+    const { data } = userAsPojo({
       firstName: "John",
       birthday: "2024-01-01",
     });
@@ -38,7 +38,7 @@ test.describe("ArkType", () => {
       firstName: "John",
       birthday: new LocalDate("2024-01-01"),
     };
-    const { data: enc } = userToJson(user);
+    const { data: enc } = userAsJson(user);
     assert.strictEqual(enc!.birthday, "2024-1-1");
   });
 });
